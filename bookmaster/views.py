@@ -45,11 +45,13 @@ def checkout(request):
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
     else:
         items = []
         order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping':False}
+        cartItems = order['get_cart_items']
 
-    context = {'items': items, 'order': order}
+    context = {'items': items, 'order': order, 'cartItems':cartItems}
     return render(request, 'store/checkout.html', context)
 
 
@@ -93,14 +95,7 @@ def processOrder(request):
         order.save()
 
         if order.shipping == True:
-            ShippingAddress.objects.create(
-		        customer=customer,
-		        order=order,
-		        address=data['shipping']['address'],
-		        city=data['shipping']['city'],
-		        state=data['shipping']['state'],
-		        zipcode=data['shipping']['zipcode'],
-        )
+            ShippingAddress.objects.create(customer=customer, order=order, address=data['shipping']['address'], city=data['shipping']['city'], state=data['shipping']['state'], zipcode=data['shipping']['zipcode'],)
 
     else:
         print('User is not logged in ...')
