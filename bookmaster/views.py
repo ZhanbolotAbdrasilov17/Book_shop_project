@@ -83,21 +83,29 @@ def updateItem(request):
 def processOrder(request):
     transaction_id = datetime.datetime.now().timestamp()
     data = json.loads(request.body)
+    print(request.user.is_authenticated)
 
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
-        total = float(data['form']['total'])
+        total = float['form']['total']
         order.transaction_id = transaction_id
 
-        if total == float(order.get_cart_total):
+        if total == order.get_cart_total:
             order.complete = True
         order.save()
+        print(order.shipping)
 
         if order.shipping == True:
-            ShippingAddress.objects.create(customer=customer, order=order, address=data['shipping']['address'], city=data['shipping']['city'], state=data['shipping']['state'], zipcode=data['shipping']['zipcode'],)
+            ShippingAddress.objects.create(
+                customer=customer,
+                order=order,
+                address=data['shipping']['address'],
+                city=data['shipping']['city'],
+                state=data['shipping']['state'],
+                zipcode=data['shipping']['zipcode'],
+            )
 
-    else:
-        print('User is not logged in ...')
-    return JsonResponse('Payment submitted..', safe=False)
+        return JsonResponse('Payment submitted..', safe=False)
+
 
