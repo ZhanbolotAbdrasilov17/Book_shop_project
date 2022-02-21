@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Gideon+Roman&family=Redressed&family=Shizuru&display=swap');wap');
+*{
+    font-family: 'Gideon Roman', cursive;
+}
 body{
 	background-color: hsl(0, 0%, 98%);
 }
 
 h1,h2,h3,h4,h5,h6{
 	color:hsl(0, 0%, 30%);
+	font-family: 'Gideon Roman', cursive;
 }
 
 .box-element{
@@ -14,19 +19,20 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .thumbnail{
+    border-radius: 20px 20px 0 0;
 	width: 100%;
-	height: 200px;
+	height: 420px;
 	-webkit-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
     -moz-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
     box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
 }
 
 .product{
-	border-radius: 0 0 4px 4px;
+	border-radius: 0 0 20px 20px;
 }
 
-.bg-dark{
-	background-color: #4f868c!important;
+.bg-dark {
+    background-color: orange!important;
 }
 
 #cart-icon{
@@ -66,6 +72,7 @@ h1,h2,h3,h4,h5,h6{
 
 .cart-row{
 	display: flex;
+	text-align: center;
     align-items: flex-stretch;
     padding-bottom: 10px;
     margin-bottom: 10px;
@@ -96,4 +103,141 @@ h1,h2,h3,h4,h5,h6{
 
 .hidden{
 	display: none!important;
+}
+.navbar{
+position: fixed;
+width: 100%;
+z-index: 100;
+}
+.navbar-dark .navbar-brand {
+    font-weight: bold;
+}
+
+.navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show>.nav-link {
+    font-weight: bold;
+}
+
+.btn-warning, .btn-success, .btn-outline-dark {
+    font-family: 'Gideon Roman', cursive;
+    font-weight: bold;
+    background-color: #086E7D;
+    border-color: #086E7D;
+    color: #fff
+}
+
+.btn-outline-dark{
+background-color: #ECB365;
+    border-color: #ECB365;
+}
+
+.btn-outline-secondary, .btn-outline-success{
+border-radius: 10px;
+    color: #fff!important;
+    -webkit-filter: none;
+    filter: none;
+    position: relative;
+    z-index: 1;
+}
+.btn-outline-success{
+border: none
+}
+.btn-outline-secondary::before, .btn-outline-success::before {
+border-radius: 10px;
+    content: " ";
+    position: absolute;
+    height: 100%;
+    width: 55%;
+    background-image: linear-gradient(#52565a, #3a3f44 60%, #353a3f);
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+    z-index: -1;
+    transition: all 0.3s ease-out;
+}
+.btn-outline-success::before{
+background-image: linear-gradient(#f9a124, #f89406 60%, #e48806)!important;
+}
+.btn-outline-secondary::after, .btn-outline-success::after {
+border-radius: 10px;
+    content: " ";
+    position: absolute;
+    height: 100%;
+    width: 55%;
+    right: 0;
+    top: 0;
+    background-image: linear-gradient(#52565a, #3a3f44 60%, #353a3f);
+    border-radius: 5px;
+    z-index: -1;
+    transition: all 0.3s ease-out;
+}
+.btn-outline-success::after{
+background-image: linear-gradient(#f9a124, #f89406 60%, #e48806)!important;
+}
+.btn-outline-secondary:hover:before, .btn-outline-success:hover:before {
+border-radius: 10px;
+    width: 0;
+}
+.btn-outline-secondary:hover:after, .btn-outline-success:hover:after {
+border-radius: 10px;
+    width: 0;
+}
+.btn-outline-secondary:hover, .btn-outline-success:hover {
+border-radius: 10px;
+    cursor: pointer;
+    background: #fff
+    color: #6c757d;
+}
+
+.cart_deleteBtn{
+    height: 38px;
+    font-weight: bold;
+    background-color: #FF1700;
+    border-color: #FF1700;
+    border-radius: 20px;
+    padding: 0;
+    color: #fff;
+    transition: all 0.3s ease-out;
+}
+.cart_deleteBtn:hover {
+    box-shadow: inset 12em 0 #fffb0e;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+}
+
+.navbar_category{
+margin: 0 38%;
+position: relative;
+}
+.navbar_category:hover .navbar_dropdown{
+ display: block;
+}
+.navbar_category h6{
+color: #ffffff;
+cursor: pointer
+}
+
+.navbar_dropdown{
+    display: none;
+    position: absolute;
+    z-index: 1999;
+    border: 0 none;
+    top: 41px;
+    right: -27px;
+    background: orange;
+    box-shadow: 0 20px 50px rgb(85 85 85 / 15%);
+    -moz-box-shadow: 0 20px 50px rgba(85,85,85,0.15);
+    -webkit-box-shadow: 0 20px 50px rgb(85 85 85 / 15%);
+}
+
+.navbar_dropdown li{
+margin: 0 20px 0 -20px;
+padding: 0;
+list-style: none;
+cursor: pointer;
+color: #fff;
+padding: 5px 10px;
+}
+
+.navbar_dropdown li:hover{
+background: #FF8E00;
 }
