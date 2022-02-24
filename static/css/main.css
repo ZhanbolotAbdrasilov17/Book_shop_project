@@ -6,6 +6,10 @@ body{
 	background-color: hsl(0, 0%, 98%);
 }
 
+.container{
+    padding-top: 57px;
+}
+
 h1,h2,h3,h4,h5,h6{
 	color:hsl(0, 0%, 30%);
 	font-family: 'Gideon Roman', cursive;
@@ -211,6 +215,9 @@ position: relative;
 .navbar_category:hover .navbar_dropdown{
  display: block;
 }
+.navbar_dropdown ul:nth-child(1){
+margin-top: 26px
+}
 .navbar_category h6{
 color: #ffffff;
 cursor: pointer
@@ -221,7 +228,7 @@ cursor: pointer
     position: absolute;
     z-index: 1999;
     border: 0 none;
-    top: 41px;
+    top: 17px;
     right: -27px;
     background: orange;
     box-shadow: 0 20px 50px rgb(85 85 85 / 15%);
@@ -232,10 +239,15 @@ cursor: pointer
 .navbar_dropdown li{
 margin: 0 20px 0 -20px;
 padding: 0;
+text-align: center;
 list-style: none;
 cursor: pointer;
 color: #fff;
 padding: 5px 10px;
+}
+
+.col-lg-4{
+text-align: center;
 }
 
 .navbar_dropdown li:hover{

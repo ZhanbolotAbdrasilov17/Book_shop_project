@@ -1,0 +1,10 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<picture>
+  <source srcset="{{product.imageURL}}" type="image/svg+xml">
+  <img src="{{product.imageURL}}" class="img-fluid img-thumbnail" alt="...">
+</picture>
+ <div style="margin: 50px 0">{{product.name}}</div>
+
+{% endblock  %}

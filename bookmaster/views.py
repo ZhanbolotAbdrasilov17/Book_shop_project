@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.views.generic import DetailView
 import json
 import datetime
 
@@ -54,6 +55,10 @@ def checkout(request):
     context = {'items': items, 'order': order, 'cartItems':cartItems}
     return render(request, 'store/checkout.html', context)
 
+def views_item(request):
+
+    return render(request, 'store/views.html')
+
 
 def updateItem(request):
     data = json.loads(request.body)
@@ -72,7 +77,8 @@ def updateItem(request):
         orderItem.quantity = (orderItem.quantity + 1)
     elif action == 'remove':
         orderItem.quantity = (orderItem.quantity - 1)
-
+    elif action == 'delete':
+        orderItem.quantity = (orderItem.quantity * 0)
     orderItem.save()
 
     if orderItem.quantity <= 0:
@@ -83,7 +89,6 @@ def updateItem(request):
 def processOrder(request):
     transaction_id = datetime.datetime.now().timestamp()
     data = json.loads(request.body)
-    print(request.user.is_authenticated)
 
     if request.user.is_authenticated:
         customer = request.user.customer
@@ -107,5 +112,12 @@ def processOrder(request):
             )
 
         return JsonResponse('Payment submitted..', safe=False)
+
+
+class ViewDetailView(DetailView):
+    model = Product
+    template_name = 'store/views.html'
+
+
 
 
