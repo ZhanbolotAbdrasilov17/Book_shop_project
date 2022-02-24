@@ -16,7 +16,6 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .box-element{
-	box-shadow:hsl(0, 0%, 80%) 0 0 16px;
 	background-color: #fff;
 	border-radius: 4px;
 	padding: 10px;
@@ -135,7 +134,6 @@ background-color: #ECB365;
 }
 
 .btn-outline-secondary, .btn-outline-success{
-border-radius: 10px;
     color: #fff!important;
     -webkit-filter: none;
     filter: none;
@@ -154,7 +152,6 @@ border-radius: 10px;
     background-image: linear-gradient(#52565a, #3a3f44 60%, #353a3f);
     top: 0;
     left: 0;
-    border-radius: 5px;
     z-index: -1;
     transition: all 0.3s ease-out;
 }
@@ -162,7 +159,7 @@ border-radius: 10px;
 background-image: linear-gradient(#f9a124, #f89406 60%, #e48806)!important;
 }
 .btn-outline-secondary::after, .btn-outline-success::after {
-border-radius: 10px;
+
     content: " ";
     position: absolute;
     height: 100%;
@@ -170,7 +167,6 @@ border-radius: 10px;
     right: 0;
     top: 0;
     background-image: linear-gradient(#52565a, #3a3f44 60%, #353a3f);
-    border-radius: 5px;
     z-index: -1;
     transition: all 0.3s ease-out;
 }
@@ -178,15 +174,12 @@ border-radius: 10px;
 background-image: linear-gradient(#f9a124, #f89406 60%, #e48806)!important;
 }
 .btn-outline-secondary:hover:before, .btn-outline-success:hover:before {
-border-radius: 10px;
     width: 0;
 }
 .btn-outline-secondary:hover:after, .btn-outline-success:hover:after {
-border-radius: 10px;
     width: 0;
 }
 .btn-outline-secondary:hover, .btn-outline-success:hover {
-border-radius: 10px;
     cursor: pointer;
     background: #fff
     color: #6c757d;
@@ -197,7 +190,6 @@ border-radius: 10px;
     font-weight: bold;
     background-color: #FF1700;
     border-color: #FF1700;
-    border-radius: 20px;
     padding: 0;
     color: #fff;
     transition: all 0.3s ease-out;

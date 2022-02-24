@@ -10,13 +10,13 @@ class Customer(models.Model):
     def __str__(self):
         return self.name
 
-# class Genre(models.Model):
-#     name = models.CharField('name', max_length=100)
-#     slug = models.SlugField('slug', max_length=100, unique=True)
+class Genre(models.Model):
+    name = models.CharField('name', max_length=100)
+    slug = models.SlugField('slug', max_length=100, unique=True)
 
 class Product(models.Model):
     name = models.CharField(max_length=200, null=True)
-
+    genre = models.ForeignKey(Genre, on_delete=models.SET_NULL, blank=True, null=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     digital = models.BooleanField(default=False, null=True, blank=True)
     image = models.ImageField(null=True, blank=True, upload_to="product_images/")
