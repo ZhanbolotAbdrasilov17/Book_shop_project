@@ -4,6 +4,7 @@
 }
 body{
 	background-color: hsl(0, 0%, 98%);
+	background-image: url(https://wallpaperaccess.com/full/2964938.jpg)
 }
 
 .container{
@@ -11,7 +12,7 @@ body{
 }
 
 h1,h2,h3,h4,h5,h6{
-	color:hsl(0, 0%, 30%);
+	color: #fff;
 	font-family: 'Gideon Roman', cursive;
 }
 
@@ -32,10 +33,11 @@ h1,h2,h3,h4,h5,h6{
 
 .product{
 	border-radius: 0 0 20px 20px;
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
 .bg-dark {
-    background-color: orange!important;
+    background-color: rgba(0, 1, 1, 0.7)!important;
 }
 
 #cart-icon{
@@ -120,11 +122,20 @@ z-index: 100;
     font-weight: bold;
 }
 
+.about{
+    text-align: center;
+}
+
+.img-fluid:hover .price, product:hover .price{
+    font-size: 30px;
+}
+
 .btn-warning, .btn-success, .btn-outline-dark {
     font-family: 'Gideon Roman', cursive;
     font-weight: bold;
     background-color: #086E7D;
     border-color: #086E7D;
+    border-radius: 9px;
     color: #fff
 }
 
@@ -190,7 +201,8 @@ background-image: linear-gradient(#f9a124, #f89406 60%, #e48806)!important;
     font-weight: bold;
     background-color: #FF1700;
     border-color: #FF1700;
-    padding: 0;
+    border-radius: 7px;
+    padding: 0 5px;
     color: #fff;
     transition: all 0.3s ease-out;
 }
