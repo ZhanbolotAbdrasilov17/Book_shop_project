@@ -121,3 +121,10 @@ class ViewDetailView(DetailView):
 
 
 
+
+
+
+
+
+
+
