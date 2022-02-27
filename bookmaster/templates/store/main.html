@@ -80,12 +80,14 @@
 		  		  <div class="navbar_category">
 					  <h6><b>Category</b></h6>
 					  <div class="navbar_dropdown">
-						  {% for genree in genres %}
-						  <ul>
-							  <li>{{ genree.name}}</li>
 
+						  <ul>
+							  <a href="{% url 'books' %}"><li>All</li></a>
+							  {% for genree in genres %}
+							  <a href="{% url 'genre' genree.id %}"><li>{{ genree.name}}</li></a>
+							  {% endfor %}
 						  </ul>
-						  {% endfor %}
+
 					  </div>
 				  </div>
 	    <div class="form-inline my-2 my-lg-0">

@@ -17,6 +17,10 @@ class Genre(models.Model):
         return self.name
 
 
+# class Author(models.Model):
+#     full_name = models.CharField(max_length=255)
+
+
 class Product(models.Model):
     name = models.CharField(max_length=200, null=True)
     genre = models.ForeignKey(Genre, on_delete=models.SET_NULL, blank=True, null=True)
@@ -34,6 +38,7 @@ class Product(models.Model):
         except:
             url = ''
         return url
+    
 
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, blank=True, null=True)

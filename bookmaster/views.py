@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
+from django.shortcuts import get_object_or_404
 import json
 import datetime
+
 
 from .models import *
 
@@ -16,13 +18,41 @@ def store(request):
         items = order.orderitem_set.all()
         cartItems = order.get_cart_items
     else:
-        items = []
         order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
         cartItems = order['get_cart_items']
 
     products = Product.objects.all()
     context = {'products': products, 'cartItems':cartItems}
     return render(request, 'store/store.html', context)
+
+
+class BookListView(ListView):
+    model = Product
+    template_name = 'store/store.html'
+    context_object_name = 'filter_books'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(BookListView, self).get_context_data(**kwargs)
+        if self.request.user.is_authenticated:
+            customer = self.request.user.customer
+            order, created = Order.objects.get_or_create(customer=customer, complete=False)
+            items = order.orderitem_set.all()
+            cartItems = order.get_cart_items
+        else:
+            order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
+            cartItems = order['get_cart_items']
+        context['cartItems'] = cartItems
+        return context
+
+    def get_queryset(self):
+        genre_id = self.kwargs.get('pk')
+        print(f'***********************{genre_id}**************')
+        if genre_id:
+            queryset = self.model.objects.filter(
+                genre_id=genre_id)
+            return queryset
+        queryset = self.model.objects.all()
+        return queryset
 
 def cart(request):
 
