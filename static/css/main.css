@@ -3,8 +3,8 @@
     font-family: 'Gideon Roman', cursive;
 }
 body{
-	background-color: hsl(0, 0%, 98%);
-	background-image: url(https://wallpaperaccess.com/full/2964938.jpg)
+	background: radial-gradient(#2C3E50, #000000);
+	background-image: url(../images/bg.jpg)
 }
 
 .container{
@@ -127,6 +127,7 @@ z-index: 100;
 .about{
     text-align: center;
     display: flex;
+    align-items: center;
 }
 .about img{
     width: 30%;
@@ -135,6 +136,7 @@ z-index: 100;
 .about__text{
 padding: 10px 12px;
 background: rgba(0, 1, 1, 0.5)!important;
+height: fit-content;
 }
 
 .img-fluid:hover .price, product:hover .price{
@@ -227,11 +229,18 @@ background-image: linear-gradient(#f9a124, #f89406 60%, #e48806)!important;
 margin: 0 38%;
 position: relative;
 }
+.navbar-collapse{
+text-align: #fff !important;
+justify-content: center;
+}
 .navbar_category:hover .navbar_dropdown{
  display: block;
 }
 .navbar_dropdown ul:nth-child(1){
-margin-top: 26px
+    margin-top: 26px;
+    background: rgba(0, 1, 1, 0.7)!important;
+    text-decoration: none;
+    border: 1px solid #fff;
 }
 .navbar_category h6{
 color: #ffffff;
@@ -245,7 +254,6 @@ cursor: pointer
     border: 0 none;
     top: 17px;
     right: -27px;
-    background: rgba(0, 1, 1, 0.7)!important;
     box-shadow: 0 20px 50px rgb(85 85 85 / 15%);
     -moz-box-shadow: 0 20px 50px rgba(85,85,85,0.15);
     -webkit-box-shadow: 0 20px 50px rgb(85 85 85 / 15%);
@@ -267,4 +275,13 @@ text-align: center;
 
 .navbar_dropdown li:hover{
 background: #FF8E00;
+}
+
+.views__content{
+display: flex;
+}
+
+.views__pic img{
+margin: 35px 60px;
+transform: scale(1.3)
 }

@@ -27,6 +27,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     digital = models.BooleanField(default=False, null=True, blank=True)
     image = models.ImageField(null=True, blank=True, upload_to="product_images/")
+    description = models.TextField(max_length=300, null=True)
 
     def __str__(self):
         return self.name
@@ -38,7 +39,7 @@ class Product(models.Model):
         except:
             url = ''
         return url
-    
+
 
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, blank=True, null=True)
