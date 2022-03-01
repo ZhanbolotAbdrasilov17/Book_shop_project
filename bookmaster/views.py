@@ -149,6 +149,27 @@ class ViewDetailView(DetailView):
     template_name = 'store/views.html'
 
 
+# def search(request):
+#     results = []
+#     if request.method == "GET":
+#         query = request.GET.get('search')
+#     if query == '':
+#         query = 'None'
+#     results = Product.objects.filter(name=query)
+#
+#     return render(request, 'main.html', {'query': query, 'results': results})
+
+
+class SearchResultsView(ListView):
+    model = Product
+    template_name = 'store/main.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Product.objects.filter(name=query)
+        return object_list
+
+
 
 
 
