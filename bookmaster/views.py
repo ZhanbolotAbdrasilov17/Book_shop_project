@@ -6,6 +6,7 @@ import json
 import datetime
 
 
+
 from .models import *
 
 # Create your views here.
@@ -162,11 +163,15 @@ class ViewDetailView(DetailView):
 
 class SearchResultsView(ListView):
     model = Product
-    template_name = 'store/main.html'
+    template_name = 'store/store.html'
+    context_object_name = 'products'
 
     def get_queryset(self):
+
         query = self.request.GET.get('q')
-        object_list = Product.objects.filter(name=query)
+        print(query)
+        object_list = Product.objects.filter(name__icontains=query)
+        print(len(object_list))
         return object_list
 
 

@@ -9,3 +9,9 @@ admin.site.register(Order)
 admin.site.register(OrderItem)
 admin.site.register(ShippingAddress)
 admin.site.register(Genre)
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'post', 'created', 'active')
+    list_filter = ('active', 'created', 'updated')
+    search_fields = ('name', 'email', 'body')
+admin.site.register(Comment, CommentAdmin)

@@ -28,6 +28,7 @@ class Product(models.Model):
     digital = models.BooleanField(default=False, null=True, blank=True)
     image = models.ImageField(null=True, blank=True, upload_to="product_images/")
     description = models.TextField(max_length=300, null=True)
+    author = models.CharField(max_length=100, null=True)
 
     def __str__(self):
         return self.name
@@ -95,4 +96,17 @@ class ShippingAddress(models.Model):
     def __str__(self):
         return self.address
 
+class Comment(models.Model):
+    post = models.ForeignKey(Product, related_name='comments', on_delete=models.CASCADE, blank=True, null=True)
+    name = models.CharField(max_length=80)
+    email = models.EmailField()
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True)
 
+    class Meta:
+        ordering = ('created',)
+
+    def __str__(self):
+        return 'Comment by {} on {}'.format(self.name, self.post)
