@@ -48,12 +48,10 @@ h1,h2,h3,h4,h5,h6, span, p{
 }
 
 #cart-total{
-	display: block;
-	text-align: center;
+    width: 20px;
+    height: 20px;
 	color:#fff;
 	background-color: red;
-	width: 20px;
-	height: 25px;
 	border-radius: 50%;
 	font-size: 14px;
 }
@@ -69,7 +67,10 @@ h1,h2,h3,h4,h5,h6, span, p{
 .row-image{
 	width: 100px;
 }
+form{
+display: flex;
 
+}
 .form-field{
 	width:250px;
 	display: inline-block;
@@ -86,12 +87,20 @@ h1,h2,h3,h4,h5,h6, span, p{
 
 }
 
+.cart-row div, button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .quantity{
+    margin-right: 4px
+}
+.quantity-divs {
+    flex-direction: column;
 	display: inline-block;
 	font-weight: 700;
 	padding-right:10px;
-
-
+    margin-top: -23px;
 }
 
 .chg-quantity{
@@ -115,6 +124,17 @@ h1,h2,h3,h4,h5,h6, span, p{
 position: fixed;
 width: 100%;
 z-index: 100;
+}
+.navbar-nav{
+width: 100%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+text-align: center;
+}
+
+.navbar-nav li:last-child{
+    margin-right: 15px;
 }
 .navbar-dark .navbar-brand {
     font-weight: bold;
@@ -217,6 +237,7 @@ background-image: linear-gradient(#f9a124, #f89406 60%, #e48806)!important;
     border-radius: 7px;
     padding: 0 5px;
     color: #fff;
+    margin-bottom: 15px;
     transition: all 0.3s ease-out;
 }
 .cart_deleteBtn:hover {
@@ -225,8 +246,17 @@ background-image: linear-gradient(#f9a124, #f89406 60%, #e48806)!important;
     color: rgb(0, 0, 0);
 }
 
+form input{
+    position: relative;
+    bottom: 5px;
+    overflow: visible;
+    border: none;
+    outline: none;
+    padding: 3px 6px;
+    border-radius: 8px;
+}
+
 .navbar_category{
-margin: 0 38%;
 position: relative;
 }
 .navbar-collapse{
@@ -240,7 +270,6 @@ justify-content: center;
     margin-top: 26px;
     background: rgba(0, 1, 1, 0.7)!important;
     text-decoration: none;
-    border: 1px solid #fff;
 }
 .navbar_category h6{
 color: #ffffff;
@@ -252,8 +281,9 @@ cursor: pointer
     position: absolute;
     z-index: 1999;
     border: 0 none;
-    top: 17px;
-    right: -27px;
+    top: 27px;
+    right:  -35px;
+    border: 1px solid #fff;
     box-shadow: 0 20px 50px rgb(85 85 85 / 15%);
     -moz-box-shadow: 0 20px 50px rgba(85,85,85,0.15);
     -webkit-box-shadow: 0 20px 50px rgb(85 85 85 / 15%);
@@ -284,4 +314,34 @@ display: flex;
 .views__pic img{
 margin: 35px 60px;
 transform: scale(1.3)
+}
+
+.cartIcon{
+    position: relative;
+}
+.cartIcon p{
+    position: absolute;
+    right: -20px;
+    top: -3px;sear
+}
+.search-icon{
+position: relative;
+    bottom: 5px;
+border: none;
+border-radius: 50%;
+background: url('../../static/images/zoom.png');
+width: 30px;
+height: 30px
+}
+
+@media (max-width: 991px){
+.navbar-nav li:last-child{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.navbar_category{
+    margin-top: 20px;
+}
+
 }
