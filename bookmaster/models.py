@@ -93,21 +93,11 @@ class ShippingAddress(models.Model):
     def __str__(self):
         return self.address
 
-# class Comment(models.Model):
-#     post = models.ForeignKey(Product, related_name='comments', on_delete=models.CASCADE, blank=True, null=True)
-#     name = models.CharField(max_length=255)
-#     body = models.TextField()
-#     date_added = models.DateTimeField(auto_now_add=True)
-#
-#     def __str__(self):
-#         return '%s - %s' % (self.post.title, self.name)
-#     # email = models.EmailField()
-#     # created = models.DateTimeField(auto_now_add=True)
-#     # updated = models.DateTimeField(auto_now=True)
-#     # active = models.BooleanField(default=True)
-#     #
-#     # class Meta:
-#     #     ordering = ('created',)
-#     #
-#     # def __str__(self):
-#     #     return 'Comment by {} on {}'.format(self.name, self.post)
+class Comment(models.Model):
+    post = models.ForeignKey(Product, related_name='comments', on_delete=models.CASCADE, blank=True, null=True)
+    name = models.CharField(max_length=255)
+    body = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return 'Comment by {} on {}'.format(self.name, self.post)

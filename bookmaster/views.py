@@ -37,7 +37,7 @@ class BookListView(ListView):
         if self.request.user.is_authenticated:
             customer = self.request.user.customer
             order, created = Order.objects.get_or_create(customer=customer, complete=False)
-            items = order.orderitem_set.all()
+            items = order.orderritem_set.all()
             cartItems = order.get_cart_items
         else:
             order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
@@ -148,6 +148,20 @@ def processOrder(request):
 class ViewDetailView(DetailView):
     model = Product
     template_name = 'store/views.html'
+
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ViewDetailView, self).get_context_data(**kwargs)
+        if self.request.user.is_authenticated:
+            customer = self.request.user.customer
+            order, created = Order.objects.get_or_create(customer=customer, complete=False)
+            cartItems = order.get_cart_items
+        else:
+            order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
+            cartItems = order['get_cart_items']
+        context['cartItems'] = cartItems
+        return context
+
 
 
 # def search(request):

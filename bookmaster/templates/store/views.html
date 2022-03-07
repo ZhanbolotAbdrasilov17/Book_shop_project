@@ -10,8 +10,22 @@
         <h2>{{product.name}}</h2>
         <p>{{product.description}}</p>
         <h2>{{comment.email}}</h2>
-    </div>
 
+        <h2>Comments....</h2>
+        {% if not post.comments.all%}
+            No comments yet...<a href="#"
+             Add One</a>
+        {% else %}
+            {% for comment in post.comments.all%}
+                <strong>
+                {{ comment.name }} -
+                {{ comment.date.added }}
+                </strong>
+                <br/>
+                {{comment.body}}
+        {% endfor %}
+        {% endif %}
+    </div>
 </div>
 
 {% endblock  %}
