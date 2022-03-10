@@ -68,6 +68,17 @@
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
+<!--			{% load crispy_forms_tags %}-->
+<!--				<div class="container py-5">-->
+<!--			<h1>Register</h1>-->
+<!--			<form method="POST">-->
+<!--				{% csrf_token %}-->
+<!--			{{ register_form|crispy }}-->
+<!--			<button class="btn btn-primary" type="submit">Register</button>-->
+<!--			</form>-->
+<!--			<p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>-->
+<!--			</div>-->
+
 
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    <ul class="navbar-nav mr-auto">
@@ -92,7 +103,7 @@
 					  </div>
 	      </li>
 			<li class="nav-item">
-	     	<a href="#"class="btn btn-warning">Login</a>
+	     	<a href="{% url 'register' %}"class="btn btn-warning">Login</a>
 
 	     	<a href="{% url 'cart' %}" class="cartIcon">
 	    		<img  id="cart-icon" src="{% static 'images/cart.png' %}">

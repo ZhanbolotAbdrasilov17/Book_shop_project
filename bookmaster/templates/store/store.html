@@ -28,12 +28,15 @@
 		</div>
 
 
+
 		{% endfor%}
+
+
 
 
 		{% for product in filter_books %}
 		<div class="col-lg-4">
-<!--			<img class="thumbnail" src="{{product.imageURL}}">-->
+			<img class="thumbnail" src="{{product.imageURL}}">
 			<picture class="product_picture">
   <source srcset="{{product.imageURL}}" type="image/svg+xml">
   <img src="{{product.imageURL}}" class="img-fluid img-thumbnail" alt="...">
