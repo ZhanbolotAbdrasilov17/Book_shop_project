@@ -18,7 +18,7 @@ from .models import *
 def store(request):
 
     if request.user.is_authenticated:
-        customer = request.user.customer
+        customer = request.user
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
         cartItems = order.get_cart_items
@@ -39,7 +39,7 @@ class BookListView(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(BookListView, self).get_context_data(**kwargs)
         if self.request.user.is_authenticated:
-            customer = self.request.user.customer
+            customer = self.request.user
             order, created = Order.objects.get_or_create(customer=customer, complete=False)
             items = order.orderritem_set.all()
             cartItems = order.get_cart_items
@@ -62,7 +62,7 @@ class BookListView(ListView):
 def cart(request):
 
     if request.user.is_authenticated:
-        customer = request.user.customer
+        customer = request.user
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
         cartItems = order.get_cart_items
@@ -78,7 +78,7 @@ def cart(request):
 
 def checkout(request):
     if request.user.is_authenticated:
-        customer = request.user.customer
+        customer = request.user
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
         cartItems = order.get_cart_items
@@ -102,7 +102,7 @@ def updateItem(request):
     print('Action:', action)
     print('Product:', productId)
 
-    customer = request.user.customer
+    customer = request.user
     product = Product.objects.get(id=productId)
     order, created = Order.objects.get_or_create(customer=customer, complete=False)
 
@@ -126,7 +126,7 @@ def processOrder(request):
     data = json.loads(request.body)
 
     if request.user.is_authenticated:
-        customer = request.user.customer
+        customer = request.user
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         total = float['form']['total']
         order.transaction_id = transaction_id
