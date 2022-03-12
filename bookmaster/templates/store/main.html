@@ -83,11 +83,21 @@
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    <ul class="navbar-nav mr-auto">
 	      <li class="nav-item">
-	        <form action="{% url 'search_results' %}" msearethod="get">
-  				<input name="q" type="text" placeholder="Search...">
-			  <button class="search-icon" type="submit"></button>
-<!--			  <button class="search-icon" type="submit"><img src="../../static/images/zoom.png" alt="search icon"></button>-->
-			</form>
+			  <form class="search" action="{% url 'search_results' %}" msearethod="get">
+     			<input name="q" class="search-txt" type="text" name="" placeholder="Type to search">
+     			<button class="search-btn" href="#" >
+					<img width="20" height="20" src="../../static/images/zoom.png" alt="search-icon">
+<!--        			<i class="fas fa-search"></i>-->
+     			</button>
+    		</form>
+
+<!--	        <form style="-->
+<!--    position: relative;" action="{% url 'search_results' %}" msearethod="get">-->
+<!--  				<input style="-->
+<!--    position: absolute; bottom: 0" name="q" type="text" placeholder="Search...">-->
+<!--			  <button class="search-icon" type="submit"></button>-->
+<!--&lt;!&ndash;			  <button class="search-icon" type="submit"><img src="../../static/images/zoom.png" alt="search icon"></button>&ndash;&gt;-->
+<!--			</form>-->
 	      </li>
 			<li class="nav-item navbar_category">
 				<h6><b>Category</b></h6>
