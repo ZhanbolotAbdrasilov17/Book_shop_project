@@ -12,4 +12,6 @@ urlpatterns = [
     path('views/<int:pk>/', views.ViewDetailView.as_view(), name="view_item"),
     path('search/', views.SearchResultsView.as_view(), name='search_results'),
     path("register/", views.register_request, name="register"),
+    path("login", views.login_request, name="login"),
+    path("logout", views.logout_request, name="logout"),
 ]
