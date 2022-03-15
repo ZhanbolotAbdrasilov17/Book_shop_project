@@ -42,7 +42,7 @@ class BookListView(ListView):
         if self.request.user.is_authenticated:
             customer = self.request.user
             order, created = Order.objects.get_or_create(customer=customer, complete=False)
-            items = order.orderritem_set.all()
+            # items = order.orderritem_set.all()
             cartItems = order.get_cart_items
         else:
             order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
@@ -90,10 +90,6 @@ def checkout(request):
 
     context = {'items': items, 'order': order, 'cartItems':cartItems}
     return render(request, 'store/checkout.html', context)
-
-def views_item(request):
-
-    return render(request, 'store/views.html')
 
 
 def updateItem(request):
@@ -158,26 +154,33 @@ class ViewDetailView(DetailView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(ViewDetailView, self).get_context_data(**kwargs)
         if self.request.user.is_authenticated:
-            customer = self.request.user.customer
-            order, created = Order.objects.get_or_create(customer=customer, complete=False)
-            cartItems = order.get_cart_items
-        else:
+            # customer = self.request.user.customer
+            # order, created = Order.objects.get_or_create(customer=customer, complete=False)
+            # cartItems = order.get_cart_items
+        # else:
             order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
             cartItems = order['get_cart_items']
         context['cartItems'] = cartItems
         return context
 
-
-
-# def search(request):
-#     results = []
-#     if request.method == "GET":
-#         query = request.GET.get('search')
-#     if query == '':
-#         query = 'None'
-#     results = Product.objects.filter(name=query)
+# class ViewDatailLLRView(DetailView):
+#     model = Product
+#     template_name = 'store/login.html'
 #
-#     return render(request, 'main.html', {'query': query, 'results': results})
+#     def get_context_data(self, *, object_list=None, **kwargs):
+#         context = super(ViewDatailLLRView, self).get_context_data(**kwargs)
+#         if self.request.user.is_authenticated:
+#             customer = self.request.user.customer
+#             order, created = Order.objects.get_or_create(customer=customer, complete=False)
+#             cartItems = order.get_cart_items
+#         else:
+#             order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
+#             cartItems = order['get_cart_items']
+#         context['cartItems'] = cartItems
+#         return context
+
+
+
 
 
 class SearchResultsView(ListView):
@@ -192,6 +195,7 @@ class SearchResultsView(ListView):
         object_list = Product.objects.filter(name__icontains=query)
         print(len(object_list))
         return object_list
+
 
 def register_request(request):
     if request.method == "POST":
@@ -224,10 +228,20 @@ def login_request(request):
     form = AuthenticationForm()
     return render(request=request, template_name="store/login.html", context={"login_form": form})
 
+
 def logout_request(request):
     logout(request)
     messages.info(request, "You have successfully logged out.")
     return redirect("store")
+
+# def new_list(request):
+#     books = Product.objects.filter(published=True).order_by('-published_date')[0:5]
+#     return render(request, 'new_list.html', {'books': books})
+
+# def popular_list(request):
+#     book = Product.objects.all().update(stories_filed=('stories_filed') + 1)
+#     return render(request, 'popular_list.html', {'book': book} )
+
 
 
 

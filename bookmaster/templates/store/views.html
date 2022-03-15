@@ -9,6 +9,8 @@
     <div class="views__about">
         <h2>{{product.name}}</h2>
         <p>{{product.description}}</p>
+        <p>{{product.author}}</p>
+
         <h2>{{comment.email}}</h2>
 
         <h2>Comments....</h2>
@@ -20,6 +22,7 @@
                 <strong>
                 {{ comment.name }} -
                 {{ comment.date.added }}
+
                 </strong>
                 <br/>
                 {{comment.body}}

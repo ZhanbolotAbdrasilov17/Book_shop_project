@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime, date
 # Create your models here.
 
 
@@ -21,6 +22,7 @@ class Product(models.Model):
     image = models.ImageField(null=True, blank=True, upload_to="product_images/")
     description = models.TextField(max_length=300, null=True)
     author = models.CharField(max_length=100, null=True)
+    # purchase_date = models.DateField(auto_now_add=False, auto_now=False, blank=True)
 
     def __str__(self):
         return self.name

@@ -363,6 +363,9 @@ height: 30px
     text-align: center;
     color: #fff;
 }
+.registration__form input{
+    padding: 4px 10px;
+}
 
 .search{
     position: absolute;
