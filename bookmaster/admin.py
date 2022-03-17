@@ -1,4 +1,5 @@
 from django.contrib import admin
+# from .models import ProductReview
 
 # Register your models here.
 
@@ -15,3 +16,7 @@ admin.site.register(Comment)
 #     list_filter = ('active', 'created', 'updated')
 #     search_fields = ('name', 'email', 'body')
 # # admin.site.register(Comment, CommentAdmin)
+
+# class ProductReviewAdmin(admin.ModelAdmin):
+# 	list_display = ('user', 'product', 'review_text', 'get_review_rating')
+# admin.site.register(ProductReview, ProductReviewAdmin)

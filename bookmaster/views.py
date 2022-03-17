@@ -153,13 +153,13 @@ class ViewDetailView(DetailView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(ViewDetailView, self).get_context_data(**kwargs)
-        if self.request.user.is_authenticated:
-            # customer = self.request.user.customer
-            # order, created = Order.objects.get_or_create(customer=customer, complete=False)
-            # cartItems = order.get_cart_items
-        # else:
-            order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
-            cartItems = order['get_cart_items']
+        # if self.request.user.is_authenticated:
+        #     # customer = self.request.user.customer
+        #     # order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        #     # cartItems = order.get_cart_items
+        # # else:
+        order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
+        cartItems = order['get_cart_items']
         context['cartItems'] = cartItems
         return context
 
@@ -242,7 +242,9 @@ def logout_request(request):
 #     book = Product.objects.all().update(stories_filed=('stories_filed') + 1)
 #     return render(request, 'popular_list.html', {'book': book} )
 
-
+def my_reviews(request):
+    reviews = ProductReview.objects.filter(user=request.user).order_by('-id')
+    return render(request, 'user/reviews.html', {'reviews': reviews})
 
 
 
