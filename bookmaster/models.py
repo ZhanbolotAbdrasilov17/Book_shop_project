@@ -22,6 +22,8 @@ class Product(models.Model):
     image = models.ImageField(null=True, blank=True, upload_to="product_images/")
     description = models.TextField(max_length=300, null=True)
     author = models.CharField(max_length=100, null=True)
+    published_date = models.DateTimeField(auto_now_add=True, null=True)
+
 
     def __str__(self):
         return self.name
@@ -34,24 +36,24 @@ class Product(models.Model):
             url = ''
         return url
 
-# RATING = (
-#     (1, '1'),
-#     (2, '2'),
-#     (3, '3'),
-#     (4, '4'),
-#     (5, '5'),
-# )
-# class ProductReview(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-#     review_text = models.TextField()
-#     review_rating = models.CharField(choices=RATING, max_length=150)
-#
-#     class Meta:
-#         verbose_name_plural = 'Reviews'
-#
-#     def get_review_rating(self):
-#         return self.review_rating
+RATING = (
+    (1, '1'),
+    (2, '2'),
+    (3, '3'),
+    (4, '4'),
+    (5, '5'),
+)
+class ProductReview(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    review_text = models.TextField()
+    review_rating = models.CharField(choices=RATING, max_length=150)
+
+    class Meta:
+        verbose_name_plural = 'Reviews'
+
+    def get_review_rating(self):
+        return self.review_rating
 
 
 class Order(models.Model):

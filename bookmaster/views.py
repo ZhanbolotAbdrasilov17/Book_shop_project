@@ -234,9 +234,9 @@ def logout_request(request):
     messages.info(request, "You have successfully logged out.")
     return redirect("store")
 
-# def new_list(request):
-#     books = Product.objects.filter(published=True).order_by('-published_date')[0:5]
-#     return render(request, 'new_list.html', {'books': books})
+def new_list(request):
+    books = Product.objects.order_by('-published_date')[:5]
+    return render(request, 'store/new_list.html', {'books': books})
 
 # def popular_list(request):
 #     book = Product.objects.all().update(stories_filed=('stories_filed') + 1)
