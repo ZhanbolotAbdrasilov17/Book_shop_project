@@ -10,7 +10,7 @@ admin.site.register(Order)
 admin.site.register(OrderItem)
 admin.site.register(ShippingAddress)
 admin.site.register(Genre)
-admin.site.register(Comment)
+# admin.site.register(Comment)
 # class CommentAdmin(admin.ModelAdmin):
 #     list_display = ('name', 'email', 'post', 'created', 'active')
 #     list_filter = ('active', 'created', 'updated')

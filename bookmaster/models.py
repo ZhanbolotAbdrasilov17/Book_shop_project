@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import datetime, date
+from datetime import datetime, date, timezone
+
+
 # Create your models here.
 
 
@@ -23,6 +25,7 @@ class Product(models.Model):
     description = models.TextField(max_length=300, null=True)
     author = models.CharField(max_length=100, null=True)
     published_date = models.DateTimeField(auto_now_add=True, null=True)
+    popular_list = models.IntegerField('popular_list', default=0)
 
 
     def __str__(self):
@@ -110,11 +113,12 @@ class ShippingAddress(models.Model):
     def __str__(self):
         return self.address
 
-class Comment(models.Model):
-    post = models.ForeignKey(Product, related_name='comments', on_delete=models.CASCADE, blank=True, null=True)
-    name = models.CharField(max_length=255)
-    body = models.TextField()
-    date_added = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return 'Comment by {} on {}'.format(self.name, self.post)
+# class Comment(models.Model):
+#     beet = models.ForeignKey(
+#         Product, on_delete=models.CASCADE, related_name='comments')
+#     author = models.ForeignKey(User, on_delete=models.CASCADE)
+#     content = models.TextField(max_length=240)
+#     date_posted = models.DateTimeField(auto_now_add=True, null=True)
+#
+#     def __str__(self):
+#         return self.content
