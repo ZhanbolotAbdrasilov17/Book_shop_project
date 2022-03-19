@@ -112,14 +112,17 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
         return self.address
-#
-# class Comment(models.Model):
-#     beet = models.ForeignKey(
-#         Product, on_delete=models.CASCADE, related_name='comments')
-#     author = models.ForeignKey(User, on_delete=models.CASCADE)
-#     email = models.EmailField(blank=True)
-#     content = models.TextField(max_length=240)
-#     date_posted = models.DateTimeField(auto_now_add=True, null=True)
-#
-#     def __str__(self):
-#         return self.content
+
+class Comment(models.Model):
+    post = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments')
+    name = models.CharField(max_length=80)
+    email = models.EmailField()
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return 'Comment {} by {}'.format(self.body, self.name)

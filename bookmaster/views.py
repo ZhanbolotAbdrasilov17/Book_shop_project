@@ -2,7 +2,7 @@ from django.shortcuts import  render, redirect
 from django.http import JsonResponse
 from django.views.generic import DetailView, ListView
 from django.shortcuts import get_object_or_404
-from .forms import NewUserForm
+from .forms import NewUserForm, CommentForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -153,6 +153,24 @@ class ViewDetailView(DetailView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(ViewDetailView, self).get_context_data(**kwargs)
+        comments = Comment.objects.filter(post=self.get_object())
+        context['comments'] = comments
+        context['form'] = CommentForm
+
+        # if request.method == "POST":
+        #     form = CommentForm(request.POST or None)
+        #     if form.is_valid():
+        #
+        #         form = form.save(commit=False)
+        #         if request.POST.get("news_parent", None):
+        #             form.news_parent_id = int(request.POST.get("news_parent"))
+        #             if request.POST.get("parent", None):
+        #                 form.parent_id = int(request.POST.get("parent"))
+        #         form.news_parent_id = pk
+        #         form.user = request.user
+        #         form.save()
+                # return HttpResponseRedirect(request.path)
+
         # if self.request.user.is_authenticated:
         #     # customer = self.request.user.customer
         #     # order, created = Order.objects.get_or_create(customer=customer, complete=False)
@@ -162,7 +180,6 @@ class ViewDetailView(DetailView):
         cartItems = order['get_cart_items']
         context['cartItems'] = cartItems
         return context
-
 # class New_list(DetailView):
 #     model = Product
 #     template_name = 'store/new_list.html'
@@ -261,22 +278,6 @@ def popular_list(request):
 def my_reviews(request):
     reviews = ProductReview.objects.filter(user=request.user).order_by('-id')
     return render(request, 'user/reviews.html', {'reviews': reviews})
-
-
-# def add_comment_to_beet(request, id):
-#     if request.method == "POST":
-#         user = request.user
-#         beet = get_object_or_404(Product, pk=id)
-#         form = CommentForm(request.POST, instance=beet)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('beets:beets-detail', beet.id)
-#     else:
-#         form = CommentForm()
-#     return render(request, 'beets/add_comment_to_beet.html', {'form': form})
-
-
-
 
 
 

@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import ProductReview
+from .models import ProductReview, Comment
 
 
 # Create your forms here.
@@ -25,9 +25,10 @@ class ReviewAdd(forms.ModelForm):
         model = ProductReview
         fields = ('review_text', 'review_rating')
 
-#
-# class CommentForm(forms.ModelForm):
-#
-#     class Meta:
-#         model = Comment
-#         fields = ['content']
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('name', 'email', 'body')
+
+

@@ -1,6 +1,5 @@
 from django.urls import path
 from . import views
-# from .views import add_comment_to_beet
 
 urlpatterns = [
     path('', views.store, name="store"),
@@ -16,7 +15,7 @@ urlpatterns = [
     path("login/", views.login_request, name="login"),
     path("logout/", views.logout_request, name="logout"),
     path("new_list/", views.new_list, name="new_list"),
-    path("popular_list/", views.popular_list, name="popular_list"),
-    # path('<int:id>/comment/', add_comment_to_beet, name='add_comment_to_beet')
+    path("popular_list/", views.popular_list, name="popular_list")
+
 
 ]

@@ -10,12 +10,15 @@ admin.site.register(Order)
 admin.site.register(OrderItem)
 admin.site.register(ShippingAddress)
 admin.site.register(Genre)
-# admin.site.register(Comment)
-# class CommentAdmin(admin.ModelAdmin):
-#     list_display = ('name', 'email', 'post', 'created', 'active')
-#     list_filter = ('active', 'created', 'updated')
-#     search_fields = ('name', 'email', 'body')
-# # admin.site.register(Comment, CommentAdmin)
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'body', 'post', 'created_on', 'active')
+    list_filter = ('active', 'created_on')
+    search_fields = ('name', 'email', 'body')
+    actions = ['approve_comments']
+
+    def approve_comments(self, request, queryset):
+        queryset.update(active=True)
 
 # class ProductReviewAdmin(admin.ModelAdmin):
 # 	list_display = ('user', 'product', 'review_text', 'get_review_rating')
