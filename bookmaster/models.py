@@ -112,11 +112,12 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
         return self.address
-
+#
 # class Comment(models.Model):
 #     beet = models.ForeignKey(
 #         Product, on_delete=models.CASCADE, related_name='comments')
 #     author = models.ForeignKey(User, on_delete=models.CASCADE)
+#     email = models.EmailField(blank=True)
 #     content = models.TextField(max_length=240)
 #     date_posted = models.DateTimeField(auto_now_add=True, null=True)
 #

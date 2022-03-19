@@ -163,21 +163,25 @@ class ViewDetailView(DetailView):
         context['cartItems'] = cartItems
         return context
 
-# class ViewDatailLLRView(DetailView):
+# class New_list(DetailView):
 #     model = Product
-#     template_name = 'store/login.html'
+#     template_name = 'store/new_list.html'
 #
 #     def get_context_data(self, *, object_list=None, **kwargs):
-#         context = super(ViewDatailLLRView, self).get_context_data(**kwargs)
-#         if self.request.user.is_authenticated:
-#             customer = self.request.user.customer
-#             order, created = Order.objects.get_or_create(customer=customer, complete=False)
-#             cartItems = order.get_cart_items
-#         else:
-#             order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
-#             cartItems = order['get_cart_items']
+#         context = super(New_list, self).get_context_data(**kwargs)
+#         # if self.request.user.is_authenticated:
+#         #     customer = self.request.user.customer
+#         #     order, created = Order.objects.get_or_create(customer=customer, complete=False)
+#         #     cartItems = order.get_cart_items
+#         # else:
+#         order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
+#         cartItems = order['get_cart_items']
 #         context['cartItems'] = cartItems
 #         return context
+#
+#     def new_list(request):
+#         books = Product.objects.order_by('-published_date')[:5]
+#         return render(request, 'store/new_list.html', {'books': books})
 
 
 

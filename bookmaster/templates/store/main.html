@@ -99,20 +99,29 @@
 <!--&lt;!&ndash;			  <button class="search-icon" type="submit"><img src="../../static/images/zoom.png" alt="search icon"></button>&ndash;&gt;-->
 <!--			</form>-->
 	      </li>
-			<li class="nav-item navbar_category">
-				<h6><b>Category</b></h6>
+            <ul class="navbar_cat">
+                <li class="nav-item navbar_category">
+				<h5><b>Category</b></h5>
 					  <div class="navbar_dropdown">
 
 						  <ul>
-							  <a href="{% url 'books' %}"><li>All</li></a>
+							  <li><a href="{% url 'books' %}">All</a></li>
 							  {% for genree in genres %}
-							  <a href="{% url 'genre' genree.id %}"><li>{{ genree.name}}</li></a>
+							  <li><a href="{% url 'genre' genree.id %}">{{ genree.name}}</a></li>
 							  {% endfor %}
 						  </ul>
 
 					  </div>
 
+
 	      </li>
+                <li class="navbar_pages">
+                <a href="/popular_list">POPULAR</a> ||
+                <a href="/new_list">NEW LIST</a>
+            </li>
+            </ul>
+
+
 			<li class="nav-item">
 			{% if not request.user.is_authenticated %}
 	     	<a href="{% url 'register' %}"class="btn btn-warning">Registration</a>

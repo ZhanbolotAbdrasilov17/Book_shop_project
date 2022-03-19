@@ -25,7 +25,7 @@ class ReviewAdd(forms.ModelForm):
         model = ProductReview
         fields = ('review_text', 'review_rating')
 
-
+#
 # class CommentForm(forms.ModelForm):
 #
 #     class Meta:

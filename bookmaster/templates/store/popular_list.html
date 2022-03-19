@@ -4,10 +4,12 @@
 <!--            <li class="nav-item">-->
 <!--                <a class="nav-link"  href="{% url 'new_list' %}"> Новинки </a>-->
 <!--            </li>-->
- {% for book in books%}
-	<div class="col-lg-4">
+<h1 style="width: 100%; text-align: center; background: rgba(0, 1, 1, 0.7)!important;">Popular</h1>
+<div class="row">
+	{% for book in books%}
+<div class="col-lg-4">
 <!--			<img class="thumbnail" src="{{product.imageURL}}">-->
-<!--			<a href="{% url 'view_item' book.id  %}">-->
+			<a href="{% url 'view_item' book.id  %}">
 				<picture class="product_picture">
   <source srcset="{{book.imageURL}}" type="image/svg+xml">
   <img src="{{book.imageURL}}" class="img-fluid img-thumbnail" alt="...">
@@ -18,7 +20,7 @@
 				<hr>
 
 				<button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
-<!--				<a class="btn btn-outline-success" href="{% url 'view_item' book.id  %}">View</a>-->
+				<a class="btn btn-outline-success" href="{% url 'view_item' book.id  %}">View</a>
 				<h4 class="price" style="display: inline-block; float: right"><strong>${{book.price|floatformat:2}}</strong></h4>
 
 			</div>
@@ -26,5 +28,7 @@
 
 <!--<h1>{{ book.name }}</h1>-->
 {% endfor %}
+</div>
+
 
 {% endblock  %}
