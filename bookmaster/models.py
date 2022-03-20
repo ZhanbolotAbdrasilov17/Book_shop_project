@@ -22,7 +22,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     digital = models.BooleanField(default=False, null=True, blank=True)
     image = models.ImageField(null=True, blank=True, upload_to="product_images/")
-    description = models.TextField(max_length=300, null=True)
+    description = models.TextField(max_length=1000, null=True)
     author = models.CharField(max_length=100, null=True)
     published_date = models.DateTimeField(auto_now_add=True, null=True)
     popular_list = models.IntegerField('popular_list', default=0)
