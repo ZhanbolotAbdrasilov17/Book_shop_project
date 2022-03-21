@@ -1,7 +1,12 @@
-from django.shortcuts import  render, redirect
+from django.forms import model_to_dict
+from django.shortcuts import render, redirect
+from rest_framework import generics
 from django.http import JsonResponse
 from django.views.generic import DetailView, ListView
 from django.shortcuts import get_object_or_404
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from .forms import NewUserForm, CommentForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
@@ -15,6 +20,8 @@ import datetime
 from .models import *
 
 # Create your views here.
+from .serializers import ProductSerializer
+
 
 def store(request):
 
@@ -180,6 +187,7 @@ class ViewDetailView(DetailView):
         cartItems = order['get_cart_items']
         context['cartItems'] = cartItems
         return context
+
 # class New_list(DetailView):
 #     model = Product
 #     template_name = 'store/new_list.html'
@@ -275,9 +283,26 @@ def popular_list(request):
     book = Product.objects.order_by('-popular_list')[:5]
     return render(request, 'store/popular_list.html', {'books': book})
 
-def my_reviews(request):
-    reviews = ProductReview.objects.filter(user=request.user).order_by('-id')
-    return render(request, 'user/reviews.html', {'reviews': reviews})
+class ProductAPIView(APIView):
+    def get(self, request):
+        lst = Product.objects.all().values()
+        return Response({'names': list(lst)})
+
+    def post(self, request):
+        post_new = Product.objects.create(
+            name=request.data['name'],
+            description=request.data['description'],
+            genre=request.data['genre']
+        )
+        return Response({'post': model_to_dict(post_new)})
+
+
+# class ProductAPIView(generics.ListAPIView):
+#     queryset = Product.objects.all()
+#     serializer_class = ProductSerializer
+
+
+
 
 
 
