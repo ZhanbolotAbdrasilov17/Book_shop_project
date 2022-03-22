@@ -553,3 +553,6 @@ input[type="submit"] {
     flex: 1;
 }
 
+.update-cart{
+background: darkred;
+}
