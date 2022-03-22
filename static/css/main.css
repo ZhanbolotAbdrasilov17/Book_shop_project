@@ -198,6 +198,13 @@ border-radius: 10px;
 .btn-outline-success::before{
 background-image: linear-gradient(#f9a124, #f89406 60%, #e48806)!important;
 }
+.row {
+    margin-right: -68px!important;
+    margin-left: -68px!important;
+    column-gap: 59px!important;
+    display: flex;
+    flex-wrap: nowrap;
+}
 .btn-outline-secondary::after, .btn-outline-success::after {
 
     content: " ";
@@ -555,4 +562,8 @@ input[type="submit"] {
 
 .update-cart{
 background: darkred;
+}
+}
+#box-element-right {
+    margin-left: 60px;
 }
